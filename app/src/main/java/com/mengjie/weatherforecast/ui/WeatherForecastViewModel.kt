@@ -1,17 +1,16 @@
-package com.mengjie.weatherforecast.viewmodel
+package com.mengjie.weatherforecast.ui
 
-import android.location.Location
 import androidx.lifecycle.*
-import com.mengjie.weatherforecast.api.WeatherApiService
-import com.mengjie.weatherforecast.model.WeatherData
-import com.mengjie.weatherforecast.model.WeatherItem
+import com.mengjie.weatherforecast.service.WeatherApiService
+import com.mengjie.weatherforecast.data.WeatherData
+import com.mengjie.weatherforecast.data.WeatherItem
 import com.mengjie.weatherforecast.repository.WeatherRepository
 import com.mengjie.weatherforecast.utils.WeatherUtils
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 
-class MainViewModel : ViewModel() {
+class WeatherForecastViewModel : ViewModel() {
     private var _location = MutableLiveData("")
     private var _temperature = MutableLiveData("")
     private var _description = MutableLiveData("")

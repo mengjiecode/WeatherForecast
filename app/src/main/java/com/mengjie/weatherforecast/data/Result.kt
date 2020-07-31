@@ -1,4 +1,4 @@
-package com.mengjie.weatherforecast.model
+package com.mengjie.weatherforecast.data
 
 data class Result(
     val success: String?,

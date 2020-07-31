@@ -1,4 +1,4 @@
-package com.mengjie.weatherforecast.view
+package com.mengjie.weatherforecast.ui
 
 import android.content.Context
 import android.content.DialogInterface
@@ -12,17 +12,16 @@ import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.mengjie.weatherforecast.viewmodel.MainViewModel
 import com.mengjie.weatherforecast.R
 import com.mengjie.weatherforecast.databinding.ActivityMainBinding
-import com.mengjie.weatherforecast.model.WeatherItem
+import com.mengjie.weatherforecast.data.WeatherItem
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.android.ext.android.inject
-import com.mengjie.weatherforecast.view.WeatherItemAdapter as WeatherItemAdapter
+import com.mengjie.weatherforecast.ui.WeatherItemAdapter as WeatherItemAdapter
 
-class MainActivity : AppCompatActivity() {
+class WeatherForecastActivity : AppCompatActivity() {
 
-    private val viewModel: MainViewModel by inject()
+    private val viewModel: WeatherForecastViewModel by inject()
     private lateinit var alertDialog: AlertDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {

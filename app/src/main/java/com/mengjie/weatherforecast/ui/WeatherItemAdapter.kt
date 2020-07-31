@@ -1,4 +1,4 @@
-package com.mengjie.weatherforecast.view
+package com.mengjie.weatherforecast.ui
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,7 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.mengjie.weatherforecast.R
 import com.mengjie.weatherforecast.databinding.RecyclerViewItemBinding
-import com.mengjie.weatherforecast.model.WeatherItem
+import com.mengjie.weatherforecast.data.WeatherItem
 
 class WeatherItemAdapter(private val items: List<WeatherItem>?) :
     RecyclerView.Adapter<WeatherItemAdapter.ViewHolder>() {

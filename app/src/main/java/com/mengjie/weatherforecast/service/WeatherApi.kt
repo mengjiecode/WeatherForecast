@@ -1,6 +1,6 @@
-package com.mengjie.weatherforecast.api
+package com.mengjie.weatherforecast.service
 
-import com.mengjie.weatherforecast.model.WeatherDataList
+import com.mengjie.weatherforecast.data.WeatherDataList
 import retrofit2.http.GET
 
 interface WeatherApi {

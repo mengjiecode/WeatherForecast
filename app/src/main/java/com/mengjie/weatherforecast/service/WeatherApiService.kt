@@ -1,4 +1,4 @@
-package com.mengjie.weatherforecast.api
+package com.mengjie.weatherforecast.service
 
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

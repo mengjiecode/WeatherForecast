@@ -1,8 +1,8 @@
 package com.mengjie.weatherforecast.repository
 
 
-import com.mengjie.weatherforecast.api.WeatherApi
-import com.mengjie.weatherforecast.model.WeatherDataList
+import com.mengjie.weatherforecast.service.WeatherApi
+import com.mengjie.weatherforecast.data.WeatherDataList
 
 class WeatherRepository(private val api: WeatherApi) {
 

@@ -1,4 +1,4 @@
-package com.mengjie.weatherforecast.utils
+package com.mengjie.weatherforecast.binding
 
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter

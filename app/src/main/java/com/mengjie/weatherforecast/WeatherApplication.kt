@@ -1,7 +1,7 @@
 package com.mengjie.weatherforecast
 
 import androidx.multidex.MultiDexApplication
-import com.mengjie.weatherforecast.viewmodel.MainViewModel
+import com.mengjie.weatherforecast.ui.WeatherForecastViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.context.GlobalContext
@@ -18,7 +18,7 @@ class WeatherApplication : MultiDexApplication() {
         if (GlobalContext.getOrNull() == null) {
             val viewModelModule = module {
                 viewModel {
-                    MainViewModel()
+                    WeatherForecastViewModel()
                 }
             }
 

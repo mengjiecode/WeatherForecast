@@ -7,7 +7,7 @@
 
         <variable
             name="weatherItem"
-            type="com.mengjie.weatherforecast.model.WeatherItem" />
+            type="com.mengjie.weatherforecast.data.WeatherItem" />
     </data>
 
     <LinearLayout
