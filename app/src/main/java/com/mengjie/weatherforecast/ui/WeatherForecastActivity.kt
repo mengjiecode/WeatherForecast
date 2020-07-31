@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.mengjie.weatherforecast.R
 import com.mengjie.weatherforecast.databinding.ActivityMainBinding
 import com.mengjie.weatherforecast.data.WeatherItem
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_weather_forecast.*
 import org.koin.android.ext.android.inject
 import com.mengjie.weatherforecast.ui.WeatherItemAdapter as WeatherItemAdapter
 
@@ -34,7 +34,7 @@ class WeatherForecastActivity : AppCompatActivity() {
         actionBar?.hide()
 
         val binding: ActivityMainBinding =
-            DataBindingUtil.setContentView(this, R.layout.activity_main)
+            DataBindingUtil.setContentView(this, R.layout.activity_weather_forecast)
         binding.lifecycleOwner = this
 
         initDialog()
