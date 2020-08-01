@@ -1,32 +1,48 @@
 package com.mengjie.weatherforecast.ui
 
 import androidx.lifecycle.*
-import com.mengjie.weatherforecast.service.WeatherApiService
+import com.mengjie.weatherforecast.service.WeatherApiHelper
 import com.mengjie.weatherforecast.data.WeatherData
 import com.mengjie.weatherforecast.data.WeatherItem
-import com.mengjie.weatherforecast.repository.WeatherRepository
+import com.mengjie.weatherforecast.repository.WeatherRepo
 import com.mengjie.weatherforecast.utils.WeatherUtils
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import org.koin.core.KoinComponent
 
 
-class WeatherForecastViewModel : ViewModel() {
-    private var _location = MutableLiveData("")
-    private var _temperature = MutableLiveData("")
-    private var _description = MutableLiveData("")
-    private var _iconUrl = MutableLiveData("")
-    private var _items = MutableLiveData<List<WeatherItem>>()
-    private var _errorMessage = MutableLiveData("")
+class WeatherForecastViewModel : ViewModel(), KoinComponent {
 
-    val location: LiveData<String> = _location
-    val temperature: LiveData<String> = _temperature
-    val description: LiveData<String> = _description
-    val iconUrl: LiveData<String> = _iconUrl
-    val items: LiveData<List<WeatherItem>> = _items
-    val errorMessage: LiveData<String> = _errorMessage
+    private val _location: MutableLiveData<String> = MutableLiveData()
+    val location: LiveData<String>
+        get() = _location
 
-    private val repo: WeatherRepository =
-        WeatherRepository(WeatherApiService.weatherApi)
+    private val _temperature: MutableLiveData<String> = MutableLiveData()
+    val temperature: LiveData<String>
+        get() = _temperature
+
+    private val _description: MutableLiveData<String> = MutableLiveData()
+    val description: LiveData<String>
+        get() = _description
+
+    private val _iconUrl: MutableLiveData<String> = MutableLiveData()
+    val iconUrl: LiveData<String>
+        get() = _iconUrl
+
+    private val _weatherItemList: MutableLiveData<List<WeatherItem>> = MutableLiveData()
+    val items: LiveData<List<WeatherItem>>
+        get() = _weatherItemList
+
+    private val _errorMessage: MutableLiveData<String> = MutableLiveData()
+    val errorMessage: LiveData<String>
+        get() = _errorMessage
+
+    private fun updateWeatherItemList(items: List<WeatherItem>) {
+        _weatherItemList.value = items
+    }
+
+    private val repo: WeatherRepo =
+        WeatherRepo(WeatherApiHelper.weatherService)
 
     fun displayForecastWeather() {
         viewModelScope.launch(Dispatchers.IO) {
@@ -49,7 +65,7 @@ class WeatherForecastViewModel : ViewModel() {
                                 "http://openweathermap.org/img/wn/${weatherData.weather?.get(0)?.icon}@2x.png"
                             )
                         }
-                _items.postValue(weatherItems)
+                _weatherItemList.postValue(weatherItems)
             } catch (e: Exception) {
                 _errorMessage.postValue(e.localizedMessage)
             }
