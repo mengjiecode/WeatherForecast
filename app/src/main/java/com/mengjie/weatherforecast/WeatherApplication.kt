@@ -1,12 +1,10 @@
 package com.mengjie.weatherforecast
 
 import androidx.multidex.MultiDexApplication
-import com.mengjie.weatherforecast.ui.WeatherForecastViewModel
+import com.mengjie.weatherforecast.di.weatherModule
 import org.koin.android.ext.koin.androidContext
-import org.koin.androidx.viewmodel.dsl.viewModel
-import org.koin.core.context.GlobalContext
+import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
-import org.koin.dsl.module
 
 class WeatherApplication : MultiDexApplication() {
     override fun onCreate() {
@@ -15,17 +13,10 @@ class WeatherApplication : MultiDexApplication() {
     }
 
     private fun setup() {
-        if (GlobalContext.getOrNull() == null) {
-            val viewModelModule = module {
-                viewModel {
-                    WeatherForecastViewModel()
-                }
-            }
-
-            startKoin {
-                androidContext(this@WeatherApplication)
-                modules(viewModelModule)
-            }
+        startKoin {
+            androidLogger()
+            androidContext(this@WeatherApplication)
+            modules(weatherModule)
         }
     }
 }
